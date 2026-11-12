@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102527">
+  <meta name="description" content="FINN turns portfolio noise into a short, sourced investor briefing with the right person to call.">
+  <title>FINN — the signal, then the person</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brandmark">f<span>.</span></span><span>FINN <small>PRIVATE DESK</small></span></div>
+      <div class="topright"><span class="live-dot"></span><span id="asof">Loading</span></div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">YOUR INVESTMENT MORNING</div>
+        <h1>The signal.<br><em>Then the person.</em></h1>
+        <p>What changed across your companies, why it matters, and who can help you understand it.</p>
+        <div class="hero-bottom"><span id="hero-date"></span><span>18 companies watched <span class="arrow">↗</span></span></div>
+      </section>
+
+      <section id="push" class="view active" aria-label="Briefing">
+        <div class="section-heading"><div><div class="eyebrow muted">01 / PUSH</div><h2>Briefing</h2></div><span class="section-icon">↘</span></div>
+        <div class="controls"><label>Window <select id="window"><option value="1">Last 24 hours</option><option value="3">Last 3 days</option><option value="7">Last 7 days</option><option value="14">Last 14 days</option></select></label><button id="settings-btn" class="text-button" type="button">Alert rules <span>⚙</span></button></div>
+        <div id="settings" class="settings" hidden><div class="settings-title">Your tripwires</div><div class="settings-grid"><label>Day move <span id="move-value">3%</span><input id="move" type="range" min="1" max="10" value="3"></label><label>Volume vs 20-day norm <span id="volume-value">2×</span><input id="volume" type="range" min="1" max="5" step="0.5" value="2"></label></div><label class="checkbox"><input id="material-only" type="checkbox" checked> Alert me to material filings</label><p>Rules run on the most recent saved daily close and on NSE filings in this digest.</p></div>
+        <div class="digest-stat"><strong id="digest-count">—</strong><span>items found</span><span class="stat-rule"></span><strong id="signal-count">—</strong><span>worth a look</span></div>
+        <div id="alerts"></div>
+        <div id="filings"></div>
+        <button id="routine-toggle" class="routine-toggle" type="button"></button>
+        <div id="routine" hidden></div>
+      </section>
+
+      <section id="pull" class="view" aria-label="Research">
+        <div class="section-heading"><div><div class="eyebrow muted">02 / PULL</div><h2>Company lens</h2></div><span class="section-icon">⌕</span></div>
+        <p class="intro">Ask about any NSE ticker. A useful first cut, with the source one tap away.</p>
+        <form id="search-form" class="search"><label class="sr-only" for="ticker">NSE ticker</label><input id="ticker" placeholder="Search an NSE ticker · e.g. TCS" autocomplete="off"><button type="submit" aria-label="Research company">↗</button></form>
+        <div class="chips" id="suggestions"></div>
+        <div id="research-result" aria-live="polite"></div>
+      </section>
+
+      <section id="network" class="view" aria-label="Network">
+        <div class="section-heading"><div><div class="eyebrow muted">03 / NETWORK</div><h2>Your edge</h2></div><span class="section-icon">✳</span></div>
+        <p class="intro">People are the shortest route from a filing to the story behind it.</p>
+        <form id="network-form" class="search"><label class="sr-only" for="network-query">Company or topic</label><input id="network-query" placeholder="Company or topic · e.g. DIXON" autocomplete="off"><button type="submit" aria-label="Find contacts">↗</button></form>
+        <div id="network-result"></div>
+        <div class="privacy-note"><span>◈</span><div><strong>A private advantage.</strong><p>This prototype uses fictional people and fictional relationships. In a real account, only contacts you choose to import would be stored.</p></div></div>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="Main navigation"><button type="button" data-view="push" class="selected"><span>◉</span>Briefing</button><button type="button" data-view="pull"><span>⌕</span>Research</button><button type="button" data-view="network"><span>✳</span>Network</button></nav>
+  </div>
+  <script src="app.js" defer></script>
+</body>
+</html>

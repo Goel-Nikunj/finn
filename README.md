@@ -1,1 +1,60 @@
-# finn
+# FINN — the signal, then the person
+
+A small mobile-first investor desk. It turns an 18-company portfolio into a short filing digest, lets you set end-of-day price and volume tripwires, gives a source-linked company readout, and suggests a relevant person from a **fictional** network.
+
+## Try it
+
+**Hosted phone demo:** See the deployed URL in the submission note. It runs from a saved snapshot, including eight company research examples.
+
+**Local version with live research for any NSE ticker that has a Screener page:**
+
+```bash
+cd /home/shriom/nipun/finn
+python3 -m pip install -r requirements.txt
+python3 refresh.py
+python3 server.py
+```
+
+Open `http://localhost:8008`. Try **Briefing → Last 7 days**, change an alert rule, open an NSE filing, then tap the suggested contact. In **Research**, try `TCS`, `DIXON`, or an unlisted-in-demo NSE ticker such as `WIPRO` when running locally. In **Network**, search `DIXON` or `Banking`.
+
+Run the smoke test:
+
+```bash
+python3 tests/smoke.py
+```
+
+## What is working
+
+- **Push:** Time-window digest from NSE announcements. Material categories rise to the top; routine items collapse. The investor can change price, volume and material-filing alert rules. Prices and volume use the last available daily close, with volume compared with the preceding 20 trading days.
+- **Pull:** A ticker can be looked up in the local server, beyond the demo list. Consolidated quarterly and annual numbers are parsed from Screener tables and displayed with simple changes over time. Each company view links to the latest available annual report and earnings call transcript in Screener's document list.
+- **Network:** Synthetic contact histories connect companies and sectors to people. Direct and second-degree paths appear in Push, Pull and a direct query. Each suggestion gives a reason.
+
+The hosted Site is a static, cached showcase. Its unknown-ticker search cannot reach the Python server, so that particular workflow runs locally. The UI says so rather than inventing an answer.
+
+## Data and provenance
+
+`refresh.py` fetches Yahoo Finance daily chart data, NSE corporate announcements, and Screener company pages. It saves `dist/snapshot.json`; the frontend reads this snapshot so a reviewer can open a stable demo even if a source throttles requests. `server.py` fetches a new Screener company page for a ticker on demand. The snapshot records retrieval time, original URLs, and any failed fetches. All company numbers are displayed as Screener table values; original annual reports and transcripts are linked for review. They are **not** represented as automatically extracted from those primary PDFs.
+
+The network is entirely fictional (`dist/network.json`). No LinkedIn scraping or real personal profiles were used. For a real product, the investor would import an opt-in contact list, with role and employer data only from consented connections or licensed sources.
+
+## Architecture and decisions
+
+```text
+Yahoo daily bars ───┐
+NSE filings ────────┼─> refresh.py ─> snapshot.json ─> mobile web app
+Screener tables/docs ┘                       │              │
+                                     synthetic contacts ───┘
+Screener ticker page ─> local server.py ─> on-demand company view
+```
+
+Ticker symbols join price, filing and company records. Rule-based filing classification scores clear event types; everything else is routine. Contact ranking uses current employer, former employer, relevant sector and relationship strength. A real identity match between a filing person and a contact would require normalized names, company and role context, and manual review before displaying a second-degree claim. The prototype does not claim that match from a name alone.
+
+No runtime LLM or autonomous agent is used. The deterministic pipeline is cheap, inspectable and keeps numeric claims tied to retrieved data. A production version could use a small model to extract cited filing and transcript passages, then a stronger model for cross-document reasoning, with source spans and a human review step before alerts. This version makes no model-written guidance or bull/bear claims.
+
+For production, I would run the refresh as a scheduled server job, keep raw documents in private object storage and normalized records in a database. Each investor would have a separate tenant and encryption keys; API requests would enforce tenant access. Contact data would be opt-in, private by default, revocable and deletable on request. I would retain only employer/role history needed for a match, delete unused profile copies after 30 days, and keep access logs without contact details. The current static demo has no authentication and therefore uses fictional contacts only.
+
+The app is hosted as a static Site; the local live-research service is a small Python HTTP server. This avoids paid infrastructure for the demonstration. A production deployment would move that endpoint behind an authenticated API and cache retrieved company pages.
+
+## Deliberate limits
+
+The research view does not yet compare management guidance against outcomes. That needs careful extraction from four transcripts and matching periods in primary filings, with passage-level citations. The demo also does not send phone push notifications; it computes triggered alerts when opened or refreshed. Price and volume are end-of-day, not intraday. NSE and Yahoo access are public-site endpoints and may be throttled or change format.
