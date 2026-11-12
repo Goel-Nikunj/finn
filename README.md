@@ -4,7 +4,7 @@ A small mobile-first investor desk. It turns an 18-company portfolio into a shor
 
 ## Try it
 
-**Hosted phone demo:** See the deployed URL in the submission note. It runs from a saved snapshot, including eight company research examples.
+**Hosted phone demo:** https://krishanu230.github.io/finn-investor-desk/ . It runs from a saved snapshot, including eight company research examples.
 
 **Local version with live research for any NSE ticker that has a Screener page:**
 
