@@ -4,7 +4,7 @@ A small mobile-first investor desk. It turns an 18-company portfolio into a shor
 
 ## Try it
 
-**Hosted phone demo:** https://krishanu230.github.io/finn-investor-desk/ . It runs from a saved snapshot, including eight company research examples.
+**Phone demo:** Run the local version below, or publish the `dist/` folder on your own GitHub Pages account using [HOSTING.md](HOSTING.md). The static demo includes eight company research examples.
 
 **Local version with live research for any NSE ticker that has a Screener page:**
 
@@ -53,7 +53,7 @@ No runtime LLM or autonomous agent is used. The deterministic pipeline is cheap,
 
 For production, I would run the refresh as a scheduled server job, keep raw documents in private object storage and normalized records in a database. Each investor would have a separate tenant and encryption keys; API requests would enforce tenant access. Contact data would be opt-in, private by default, revocable and deletable on request. I would retain only employer/role history needed for a match, delete unused profile copies after 30 days, and keep access logs without contact details. The current static demo has no authentication and therefore uses fictional contacts only.
 
-The app is hosted as a static Site; the local live-research service is a small Python HTTP server. This avoids paid infrastructure for the demonstration. A production deployment would move that endpoint behind an authenticated API and cache retrieved company pages.
+The static demo can be hosted on GitHub Pages; the local live-research service is a small Python HTTP server. This avoids paid infrastructure for the demonstration. A production deployment would move that endpoint behind an authenticated API and cache retrieved company pages.
 
 ## Deliberate limits
 
