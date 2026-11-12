@@ -1,0 +1,18 @@
+{
+  "disclaimer": "All people, relationships, meeting dates and career histories below are synthetic demo data. No real professional profiles were collected.",
+  "contacts": [
+    {"id":"a1","name":"Aarav Mehta","role":"Former finance lead","company":"TCS","former":["INFY"],"themes":["Technology","enterprise AI"],"met":"2026-09-16","strength":"strong","context":"Worked on delivery economics and large client renewals.","links":["p1"]},
+    {"id":"a2","name":"Nisha Rao","role":"Former credit officer","company":"HDFCBANK","former":["ICICIBANK"],"themes":["Banking","credit quality"],"met":"2026-02-03","strength":"strong","context":"Can explain loan growth, deposit costs and underwriting."},
+    {"id":"a3","name":"Kabir Sethi","role":"Supply chain advisor","company":"DIXON","former":["POLYCAB"],"themes":["Electronics","manufacturing"],"met":"2025-12-05","strength":"warm","context":"Knows component sourcing and capacity ramp risks."},
+    {"id":"a4","name":"Leena Iyer","role":"Ex strategy manager","company":"RELIANCE","former":["BHARTIARTL"],"themes":["Energy","Telecom"],"met":"2026-08-27","strength":"strong","context":"Can separate group level plans from operating unit execution."},
+    {"id":"a5","name":"Rohan Shah","role":"Pharma operations consultant","company":"SUNPHARMA","former":["DRREDDY","DIVISLAB"],"themes":["Pharma","manufacturing"],"met":"2025-04-21","strength":"warm","context":"Has worked through quality audits and plant expansions."},
+    {"id":"a6","name":"Maya Krishnan","role":"Former consumer analyst","company":"ITC","former":["HINDUNILVR","DMART"],"themes":["Consumer","distribution"],"met":"2024-10-11","strength":"warm","context":"Can explain channel inventory and pricing power."},
+    {"id":"a7","name":"Dev Patel","role":"Industrial procurement lead","company":"LT","former":["ASIANPAINT","PIDILITIND"],"themes":["Industrials","Materials"],"met":"2026-07-10","strength":"strong","context":"Tracks order conversion and project execution."},
+    {"id":"a8","name":"Sana Kapoor","role":"Mobility product leader","company":"MARUTI","former":["EICHERMOT","TRENT"],"themes":["Automotive","Consumer"],"met":"2025-08-29","strength":"warm","context":"Can explain dealer demand and model mix."},
+    {"id":"a9","name":"Farah Ali","role":"Investor relations advisor","company":"BAJFINANCE","former":["SBIN"],"themes":["Banking","rural lending"],"met":"2026-05-04","strength":"strong","context":"Can unpack lending growth versus funding costs.","links":["p2"]}
+  ],
+  "second_degree": [
+    {"id":"p1","name":"Ritika Sen","role":"Former TCS finance director","company":"TCS","via":"a1","basis":"Worked together on the same finance team (synthetic)"},
+    {"id":"p2","name":"Vikram Bansal","role":"Bajaj Finance regional head","company":"BAJFINANCE","via":"a9","basis":"Former direct colleague (synthetic)"}
+  ]
+}
