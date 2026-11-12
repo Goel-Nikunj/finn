@@ -14,6 +14,8 @@ assert snapshot["filings"]
 assert "TCS" in snapshot["research"]
 assert any(d["type"] == "annual" for d in snapshot["research"]["TCS"]["documents"])
 assert any(d["type"] == "transcript" for d in snapshot["research"]["TCS"]["documents"])
+evidence = json.loads((ROOT / "dist/evidence.json").read_text())
+assert evidence["TCS"]["passages"][0]["page"] == 2
 
 proc = subprocess.Popen([sys.executable, "server.py"], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 open_local = build_opener(ProxyHandler({})).open

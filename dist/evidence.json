@@ -1,0 +1,12 @@
+{
+  "TCS": {
+    "period": "Quarter ended September 2026",
+    "source_label": "TCS earnings call transcript, 8 October 2026",
+    "source_url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/7dc14216-f892-46f1-bf82-5c7b387a83b9.pdf",
+    "passages": [
+      {"page": 2, "finding": "Investor relations says TCS does not provide specific revenue or earnings guidance. This quarter should be compared with management's growth commentary, not a numerical promise."},
+      {"page": 3, "finding": "The CFO reported ₹73,188 crore of quarterly revenue, up 1.3% sequentially and 11.2% year on year."},
+      {"page": 4, "finding": "The CFO said operating margin held at 24% sequentially while the company continued investing for growth."}
+    ]
+  }
+}
