@@ -9,13 +9,13 @@ A small mobile-first investor desk. It turns an 18-company portfolio into a shor
 **Local version with live research for any NSE ticker that has a Screener page:**
 
 ```bash
-cd /home/shriom/nipun/finn
+cd <your_path>/finn
 python3 -m pip install -r requirements.txt
 python3 refresh.py
 python3 server.py
 ```
 
-Open `http://localhost:8008`. Try **Briefing → Last 7 days**, change an alert rule, open an NSE filing, then tap the suggested contact. In **Research**, try `TCS`, `DIXON`, or an unlisted-in-demo NSE ticker such as `WIPRO` when running locally. In **Network**, search `DIXON` or `Banking`.
+Open `https://goel-nikunj.github.io/finn/`. Try **Briefing → Last 7 days**, change an alert rule, open an NSE filing, then tap the suggested contact. In **Research**, try `TCS`, `DIXON`, or an unlisted-in-demo NSE ticker such as `WIPRO` when running locally. In **Network**, search `DIXON` or `Banking`.
 
 Run the smoke test:
 
